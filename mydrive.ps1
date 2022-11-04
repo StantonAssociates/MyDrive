@@ -61,7 +61,7 @@ Add-Type –assemblyName PresentationFramework
                Grid.Row="2" FontSize="14" HorizontalContentAlignment="Center"
                Grid.ColumnSpan="3" Grid.Column="0" Background="LightGray" Height="30" Width="800"/>
         
-        <ListBox Name="AllDiskDrivesDetailedInformationListBox" Grid.Row="3" Grid.ColumnSpan="3" Grid.Column="0" Height="377"
+        <ListBox Name="AllDiskDrivesDetailedInformationListBox" Grid.Row="3" Grid.ColumnSpan="3" Grid.Column="0" Height="366"
                  ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible">
         </ListBox>
     </Grid>
