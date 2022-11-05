@@ -111,9 +111,9 @@ Function FetchButtonHandler
 
   foreach ($Disk in $Disks)
   {
-    if ($Disk.SerialNumber)
+    if ($Disk.FriendlyName)
     {
-      $MyDisks.Add($Disk.SerialNumber.ToString().Trim(), $Disk)
+      $MyDisks.Add($Disk.FriendlyName, $Disk)
     }
   }
 
@@ -141,19 +141,18 @@ Function SelectedDiskDriveChangedHandler
   }
 
   $FriendlyNameOfSelectedDisk = $AllDiskDrivesListBox.SelectedItem.ToString()
-  $SerialNumberOfSelectedDisk = $MyDrives[$FriendlyNameOfSelectedDisk].SerialNumber
 
   $AllDiskDrivesInformationListBox.Items.Clear()
   $AllDiskDrivesDetailedInformationListBox.Items.Clear()
 
   #Disk Counters
-  $AllDiskDrivesInformationListBox.Items.Add("Size : " + [math]::round($MyDisks[$SerialNumberOfSelectedDisk].Size/1Gb, 2) + " Gb")
-  $AllDiskDrivesInformationListBox.Items.Add("BootFromDisk : " + $MyDisks[$SerialNumberOfSelectedDisk].BootFromDisk)
+  $AllDiskDrivesInformationListBox.Items.Add("Size : " + [math]::round($MyDisks[$FriendlyNameOfSelectedDisk].Size/1Gb, 2) + " Gb")
+  $AllDiskDrivesInformationListBox.Items.Add("BootFromDisk : " + $MyDisks[$FriendlyNameOfSelectedDisk].BootFromDisk)
 
-  $AllDiskDrivesDetailedInformationListBox.Items.Add("DiskNumber : " + $MyDisks[$SerialNumberOfSelectedDisk].DiskNumber)
-  $AllDiskDrivesDetailedInformationListBox.Items.Add("NumberOfPartition : " + $MyDisks[$SerialNumberOfSelectedDisk].NumberOfPartitions)
-  $AllDiskDrivesDetailedInformationListBox.Items.Add("PartitionStyle : " + $MyDisks[$SerialNumberOfSelectedDisk].PartitionStyle)
-  $AllDiskDrivesDetailedInformationListBox.Items.Add("ProvisioningType : " + $MyDisks[$SerialNumberOfSelectedDisk].ProvisioningType)
+  $AllDiskDrivesDetailedInformationListBox.Items.Add("DiskNumber : " + $MyDisks[$FriendlyNameOfSelectedDisk].DiskNumber)
+  $AllDiskDrivesDetailedInformationListBox.Items.Add("NumberOfPartition : " + $MyDisks[$FriendlyNameOfSelectedDisk].NumberOfPartitions)
+  $AllDiskDrivesDetailedInformationListBox.Items.Add("PartitionStyle : " + $MyDisks[$FriendlyNameOfSelectedDisk].PartitionStyle)
+  $AllDiskDrivesDetailedInformationListBox.Items.Add("ProvisioningType : " + $MyDisks[$FriendlyNameOfSelectedDisk].ProvisioningType)
 
   #Drive Counters
   $AllDiskDrivesInformationListBox.Items.Add("HealthStatus : " + $MyDrives[$FriendlyNameOfSelectedDisk].HealthStatus)
