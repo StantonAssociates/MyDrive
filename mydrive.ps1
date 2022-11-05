@@ -104,8 +104,6 @@ Function FetchButtonHandler
 {
   $FetchButton.IsEnabled = $false
 
-  $CurrentSelection = $AllDiskDrivesListBox.SelectedItem;
-
   ClearInformation
 
   $Disks= Get-Disk
@@ -130,14 +128,7 @@ Function FetchButtonHandler
       $AllDiskDrivesListBox.Items.Add($Drive.FriendlyName)
     }
   }
-  if ($CurrentSelection)
-  {
-    $AllDiskDrivesListBox.SelectedItem = $CurrentSelection
-  }
-  else
-  {
-    $AllDiskDrivesListBox.SelectedItem = $AllDiskDrivesListBox.Items[0]
-  }
+  $AllDiskDrivesListBox.SelectedItem = $AllDiskDrivesListBox.Items[0]
 
   $ClearButton.IsEnabled = $true
 }
